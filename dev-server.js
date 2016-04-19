@@ -7,17 +7,19 @@ const server = new Server();
 server.connection({ port: 3000 });
 
 server.register([
-  h2o2, {
-  register: WebpackPlugin,
-  options: './webpack.config.js'
-}], error => {
+  h2o2,
+  {
+    register: WebpackPlugin,
+    options: './webpack.config.js'
+  }
+], error => {
   if (error) {
     return console.error(error);
   }
 
   server.route({
-    method: 'GET',
-    path: '/{any}',
+    method: '*',
+    path: '/{all}',
     handler: {
       proxy: {
         host: '0.0.0.0',
