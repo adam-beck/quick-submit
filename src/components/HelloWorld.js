@@ -11,6 +11,8 @@ class HelloWorld extends Component {
   handler() {
     const name = this.refs.myInput.value;
 
+    this.refs.myInput.value = '';
+
     fetch('/names', {
       method: 'POST',
       headers: {
