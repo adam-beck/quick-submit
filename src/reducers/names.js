@@ -2,7 +2,7 @@ const name = (state, action) => {
   switch (action.type) {
     case 'ADD_NAME':
       return {
-        id: action.name
+        name: action.name
       };
     default:
       return state;
@@ -12,7 +12,10 @@ const name = (state, action) => {
 const names = (state = [], action) => {
   switch (action.type) {
     case 'ADD_NAME':
-      return [...state, name(undefined, action)]
+      return [
+        ...state,
+        name(undefined, action)
+      ];
     default:
       return state;
   }
