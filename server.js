@@ -3,7 +3,7 @@
 const Hapi = require('hapi');
 const pg = require('pg');
 
-const connectionString = 'postgres://postgres@localhost:3006/postgres';
+const connectionString = 'postgres://postgres@postgres/postgres';
 
 var client = new pg.Client(connectionString);
 client.connect();

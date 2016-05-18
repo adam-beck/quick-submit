@@ -3,6 +3,20 @@ version: '2'
 services:
   postgres:
     image: postgres
+    networks:
+      - app
     ports:
-      - "3006:5432"
+      - "3009:5432"
+  node-server:
+    image: node
+    working_dir: /usr/src/app
+    volumes:
+      - $PWD:/usr/src/app
+    command: "node server.js"
+    ports:
+      - "3005:3005"
+    networks:
+      - app
 
+networks:
+  app:
