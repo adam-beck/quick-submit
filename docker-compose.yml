@@ -6,7 +6,7 @@ services:
     networks:
       - app
     ports:
-      - "3009:5432"
+      - "3001:5432"
   node-server:
     image: node
     working_dir: /usr/src/app
@@ -14,7 +14,7 @@ services:
       - $PWD:/usr/src/app
     command: "node server.js"
     ports:
-      - "3005:3005"
+      - "3000:3000"
     networks:
       - app
 
