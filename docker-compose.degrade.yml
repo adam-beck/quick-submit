@@ -1,0 +1,15 @@
+postgres:
+  image: postgres
+  ports:
+    - "3101:5432"
+node-server:
+  image: node
+  working_dir: /usr/src/app
+  volumes:
+    - $PWD:/usr/src/app
+  command: "npm run server"
+  links:
+    - postgres
+  ports:
+    - "3100:3000"
+  restart: unless-stopped
