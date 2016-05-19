@@ -26,7 +26,7 @@ server.route({
   method: 'POST',
   path: '/names',
   handler: (request, reply) => {
-    client.query('INSERT INTO names (name) VALUES ($1)', [request.payload.name], (err, result) => {
+    client.query('INSERT INTO users (name) VALUES ($1)', [request.payload.name], (err, result) => {
 
       if (err) {
         throw err;
@@ -41,7 +41,7 @@ server.route({
   method: 'GET',
   path: '/names',
   handler: (request, reply) => {
-    client.query(`SELECT * from names`, (err, results) => {
+    client.query(`SELECT * from users`, (err, results) => {
       reply(results.rows);
     });
 
