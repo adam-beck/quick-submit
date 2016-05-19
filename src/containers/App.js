@@ -3,11 +3,17 @@ import AddName from './AddName';
 import NameList from './NameList';
 
 
-const App = () => (
-  <div>
-    <AddName />
-    <NameList />
-  </div>
-);
+class App extends Component {
+
+  render() {
+    return (
+      <div>
+        <AddName />
+        <NameList />
+      </div>
+    );
+  }
+
+};
 
 export default App;
