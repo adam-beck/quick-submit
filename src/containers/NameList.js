@@ -4,21 +4,14 @@ import { bindActionCreators } from 'redux';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    names: state.names.map(person => person.name)
+    names: state.names
   };
 };
 
-    // <div>Wat!</div>
-// let NameList = (names) => (
-//   <div>
-//     {names}
-//   </div>
-// );
 let NameList = ({ names }) => {
-  console.log(names);
   return (
     <ul>
-      {names.map(name => (<li>{name}</li>))}
+      {names.map((name, index) => (<li key={index}>{name}</li>))}
     </ul>
   );
 };

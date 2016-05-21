@@ -19,12 +19,13 @@ server.register([
 
   server.route({
     method: '*',
-    path: '/{all}',
+    path: '/api/{all}',
     handler: {
       proxy: {
-        host: '0.0.0.0',
-        port: '3000',
-        passThrough: true
+        mapUri: (request, callback) => {
+          // strip the leading /api because the server doesn't require that
+          callback(null, `http://0.0.0.0:3000/${request.params.all}`);
+        }
       }
     }
   });

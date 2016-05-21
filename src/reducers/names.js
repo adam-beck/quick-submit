@@ -1,9 +1,7 @@
 const name = (state, action) => {
   switch (action.type) {
     case 'ADD_NAME':
-      return {
-        name: action.name
-      };
+      return action.name;
     default:
       return state;
   }
@@ -11,6 +9,8 @@ const name = (state, action) => {
 
 const names = (state = [], action) => {
   switch (action.type) {
+    case 'SET_NAMES':
+      return action.users.map(user => user.name);
     case 'ADD_NAME':
       return [
         ...state,

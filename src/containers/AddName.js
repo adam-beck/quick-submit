@@ -2,6 +2,22 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addName } from '../actions';
 
+function addNameToServer(dispatch, name) {
+    fetch('/api/names', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: name
+      })
+    })
+    .then(() => {
+      dispatch(addName(name));
+    });
+}
+
 let AddName = ({ dispatch }) => {
   let input;
 
@@ -11,7 +27,7 @@ let AddName = ({ dispatch }) => {
         input = node;
       }} />
       <button onClick={() => {
-        dispatch(addName(input.value));
+        addNameToServer(dispatch, input.value);
         input.value = '';
       }}>
         Add Name
